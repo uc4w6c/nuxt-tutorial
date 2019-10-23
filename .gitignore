@@ -1,0 +1,14 @@
+# my-first-nuxt-appディレクトリ
+# dependencies
+my-first-nuxt-app/node_modules
+
+# logs
+my-first-nuxt-app/npm-debug.log
+
+# Nuxt build
+my-first-nuxt-app/.nuxt
+
+# Nuxt generate
+my-first-nuxt-app/dist
+
+my-first-nuxt-app/.envrc

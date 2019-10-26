@@ -29,10 +29,12 @@ export default() => (new Vuex.Store({
                 console.log('Starting Request: ', request)
                 return request
             })
+            /*
             this.$axios.interceptors.response.use(response => {
                 console.log('Response: ', response)
                 return response
             })
+            */
 
             const items = await this.$axios.$get('https://qiita.com/api/v2/items?query=tag:nuxt.js')
             commit('setItems', { items })

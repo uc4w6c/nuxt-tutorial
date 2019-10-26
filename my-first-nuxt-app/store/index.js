@@ -12,7 +12,7 @@ export default() => (new Vuex.Store({
         userItems: (state) => state.userItems
     },
     mutations: {
-        setItems (state, {items }) {
+        setItems (state, { items }) {
             state.items = items
         },
         setUser (state, { user }) {
@@ -24,7 +24,17 @@ export default() => (new Vuex.Store({
     },
     actions: {
         async fetchItems({ commit }) {
-            const items = await this.$axios.$get('https://qiita.com.api/v2/items?query=tag:nuxt.js')
+            // 以下一時的にログ出力する
+            this.$axios.interceptors.request.use(request => {
+                console.log('Starting Request: ', request)
+                return request
+            })
+            this.$axios.interceptors.response.use(response => {
+                console.log('Response: ', response)
+                return response
+            })
+
+            const items = await this.$axios.$get('https://qiita.com/api/v2/items?query=tag:nuxt.js')
             commit('setItems', { items })
         },
         async fetchUserInfo({ commit }, { id }) {

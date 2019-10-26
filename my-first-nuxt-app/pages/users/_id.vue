@@ -24,12 +24,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-    async asyncData({ route, app }) {
-        // MEMO: paramsの取得は`(バッククォート)
-        const user = await app.$axios.$get(`https://qiita.com/api/v2/users/${route.params.id}`)
-        const items = await app.$axios.$get(`https://qiita.com/api/v2/items?query=user:${route.params.id}`)
-        return { user, items }
+    head() {
+        return {
+            title: this.user.id
+        }
+    },
+    async asyncData({ route, store, redirect }) {
+        if (store.getters['users'][route.params.id]) {
+          return
+        }
+        try {
+          await store.dispatch('fetchUserInfo', { id: route.params.id })
+        } catch (e) {
+          redirect('/') // 本来であれば404ページを返却。
+        }
+    },
+    computed: {
+      user() {
+        return this.users[this.$route.params.id]
+      },
+      items() {
+        return this.userItems[this.$route.params.id] || []
+      },
+      ...mapGetters(['users', 'userItems'])
     }
 }
 </script>

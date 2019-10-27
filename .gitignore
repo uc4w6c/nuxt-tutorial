@@ -12,3 +12,15 @@ my-first-nuxt-app/.nuxt
 my-first-nuxt-app/dist
 
 my-first-nuxt-app/.envrc
+
+
+# nuxt-blog-serviceディレクトリ
+# dependencies
+nuxt-blog-service/node_modules
+
+# logs
+nuxt-blog-service/npm-debug.log
+
+# Nuxt build
+nuxt-blog-service/.nuxt
+

@@ -26,6 +26,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
+// chapter2の最後で動かなくなった・・・P56,57を参照
 export default {
     head() {
         return {

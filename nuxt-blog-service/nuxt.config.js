@@ -1,6 +1,7 @@
 
 export default {
   mode: 'universal',
+  srcDir: 'app',
   /*
   ** Headers of the page
   */
@@ -48,6 +49,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'https://nuxt-blog-service-tutorial.firebaseio.com'
   },
   /*
   ** Build configuration

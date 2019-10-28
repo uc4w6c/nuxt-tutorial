@@ -26,6 +26,7 @@ import Cookies from 'universal-cookie'
 
 export default {
   asyncData({ redirect, store }) {
+    console.log('SSR!')
     if (store.getters['user']) {
       redirect('/posts/')
     }
